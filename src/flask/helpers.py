@@ -33,6 +33,23 @@ def get_debug_flag() -> bool:
     return bool(val and val.lower() not in {"0", "false", "no"})
 
 
+def is_debug() -> bool:
+    """Return whether the current application is running in debug mode.
+
+    Returns ``False`` if there is no active application context, so this
+    can be called safely anywhere without raising.
+
+    Unlike :func:`get_debug_flag`, which only reads the :envvar:`FLASK_DEBUG`
+    environment variable, this reports the active app's ``debug`` value.
+
+    .. versionadded:: 3.2
+    """
+    if (ctx := _cv_app.get(None)) is not None:
+        return bool(ctx.app.debug)
+
+    return False
+
+
 def get_load_dotenv(default: bool = True) -> bool:
     """Get whether the user has disabled loading default dotenv files by
     setting :envvar:`FLASK_SKIP_DOTENV`. The default is ``True``, load
