@@ -14,6 +14,7 @@ from .helpers import abort as abort
 from .helpers import flash as flash
 from .helpers import get_flashed_messages as get_flashed_messages
 from .helpers import get_template_attribute as get_template_attribute
+from .helpers import is_debug as is_debug
 from .helpers import make_response as make_response
 from .helpers import redirect as redirect
 from .helpers import send_file as send_file

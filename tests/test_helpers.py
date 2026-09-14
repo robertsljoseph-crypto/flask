@@ -375,3 +375,14 @@ def test_open_resource_with_encoding(tmp_path, encoding):
 
     with app.open_resource("test", mode="rt", encoding=encoding) as f:
         assert f.read() == "test"
+
+
+@pytest.mark.parametrize("debug", (True, False))
+def test_is_debug(debug):
+    assert flask.is_debug() is False
+
+    app = flask.Flask(__name__)
+    app.debug = debug
+
+    with app.app_context():
+        assert flask.is_debug() is debug

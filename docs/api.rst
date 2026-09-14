@@ -200,6 +200,8 @@ Useful Functions and Classes
 
 .. autofunction:: redirect
 
+.. autofunction:: is_debug
+
 .. autofunction:: make_response
 
 .. autofunction:: after_this_request
